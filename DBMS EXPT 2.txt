@@ -1,0 +1,72 @@
+mysql> use db;
+Database changed
+mysql> desc Patient;
+mysql> alter table Patient
+    -> add primary key(Ph_no);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| Patient_Name | char(20) | NO   |     |         |       |
+| Patient_id   | int(10)  | YES  |     | NULL    |       |
+| Ph_no        | int(10)  | NO   | PRI | 0       |       |
+| Blood_group  | char(4)  | YES  |     | NULL    |       |
+| Disease      | char(15) | YES  |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql>alter table Donor
+    ->add foreign key(Ph_no) references Patient(Ph_no);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+mysql> desc Donor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| Donor_Name     | char(20) | YES  |     | NULL    |       |
+| Donor_id       | int(10)  | YES  |     | NULL    |       |
+| Blood_group    | char(4)  | YES  |     | NULL    |       |
+| Medical_report | char(30) | YES  |     | NULL    |       |
+| Address        | char(77) | YES  |     | NULL    |       |
+| Ph_no          | int(10)  | YES  | MUL | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table Donor add primary key(Donor_Name);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Donor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| Donor_Name     | char(20) | NO   | PRI |         |       |
+| Donor_id       | int(10)  | YES  |     | NULL    |       |
+| Blood_group    | char(4)  | YES  |     | NULL    |       |
+| Medical_report | char(30) | YES  |     | NULL    |       |
+| Address        | char(77) | YES  |     | NULL    |       |
+| Ph_no          | int(10)  | YES  | MUL | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> alter table Donor add unique(Medical_report);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Donor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| Donor_Name     | char(20) | NO   | PRI |         |       |
+| Donor_id       | int(10)  | YES  |     | NULL    |       |
+| Blood_group    | char(4)  | YES  |     | NULL    |       |
+| Medical_report | char(30) | YES  | UNI | NULL    |       |
+| Address        | char(77) | YES  |     | NULL    |       |
+| Ph_no          | int(10)  | YES  | MUL | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql>
