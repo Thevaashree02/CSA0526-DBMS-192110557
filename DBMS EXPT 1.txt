@@ -1,0 +1,85 @@
+
+
+mysql> use db;
+Database changed
+mysql> create table Patient(Patient_Name char(20),Patient_id int(10),Ph_no int(10),Blood_group char(4),Disease char(15));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Patient;
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| Patient_Name | char(20) | YES  |     | NULL    |       |
+| Patient_id   | int(10)  | YES  |     | NULL    |       |
+| Ph_no        | int(10)  | YES  |     | NULL    |       |
+| Blood_group  | char(4)  | YES  |     | NULL    |       |
+| Disease      | char(15) | YES  |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table Patient add Address char(77);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Patient;
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| Patient_Name | char(20) | YES  |     | NULL    |       |
+| Patient_id   | int(10)  | YES  |     | NULL    |       |
+| Ph_no        | int(10)  | YES  |     | NULL    |       |
+| Blood_group  | char(4)  | YES  |     | NULL    |       |
+| Disease      | char(15) | YES  |     | NULL    |       |
+| Address      | char(77) | YES  |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> alter table Patient
+    -> drop column Address;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Patient;
++--------------+----------+------+-----+---------+-------+
+| Field        | Type     | Null | Key | Default | Extra |
++--------------+----------+------+-----+---------+-------+
+| Patient_Name | char(20) | YES  |     | NULL    |       |
+| Patient_id   | int(10)  | YES  |     | NULL    |       |
+| Ph_no        | int(10)  | YES  |     | NULL    |       |
+| Blood_group  | char(4)  | YES  |     | NULL    |       |
+| Disease      | char(15) | YES  |     | NULL    |       |
++--------------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> create table Donor(Donor_Name char(20),Donor_id int(10),Blood_group char(4),Medical_report char(30),Address char(77),Ph_no int(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc
+    -> Donor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| Donor_Name     | char(20) | YES  |     | NULL    |       |
+| Donor_id       | int(10)  | YES  |     | NULL    |       |
+| Blood_group    | char(4)  | YES  |     | NULL    |       |
+| Medical_report | char(30) | YES  |     | NULL    |       |
+| Address        | char(77) | YES  |     | NULL    |       |
+| Ph_no          | int(10)  | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+6 rows in set (0.01 sec)
+
+mysql> create table Blood_bank(Blood_bank_name char(20),Ph_no int(10),Branch char(20),Address char(77));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Blood_bank;
++-----------------+----------+------+-----+---------+-------+
+| Field           | Type     | Null | Key | Default | Extra |
++-----------------+----------+------+-----+---------+-------+
+| Blood_bank_name | char(20) | YES  |     | NULL    |       |
+| Ph_no           | int(10)  | YES  |     | NULL    |       |
+| Branch          | char(20) | YES  |     | NULL    |       |
+| Address         | char(77) | YES  |     | NULL    |       |
++-----------------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql>
