@@ -1,0 +1,31 @@
+
+mysql> use db;
+Database changed
+mysql>insert into Patient
+    ->values('Raja',77,360942378,'0+ve','Kidney_failure'),('Jaya',11,496570124,'0-ve','TB'),('Tinu',69,63811756,'O+ve','AIDS'),('Ajay',50,763675267,'B+ve','TB');
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Jaya         |         11 | 496570124 | O-ve        | TB             |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
++--------------+------------+-----------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select Patient_Name from Patient;
++--------------+
+| Patient_Name |
++--------------+
+| Raja         |
+| Jaya         |
+| Tinu         |
+| Ajay         |
++--------------+
+4 rows in set (0.00 sec)
+
+mysql>
