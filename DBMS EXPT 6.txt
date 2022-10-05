@@ -1,0 +1,44 @@
+
+mysql> select*from Patient
+    -> where Patient_Name IN('Naren','Ajay');
++--------------+------------+-----------+-------------+---------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease |
++--------------+------------+-----------+-------------+---------+
+| Naren        |         62 | 595168547 | B+ve        | Asthma  |
+| Ajay         |         50 | 763675267 | B+ve        | TB      |
++--------------+------------+-----------+-------------+---------+
+2 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> where Patient_id BETWEEN 45 AND 69;
++--------------+------------+-----------+-------------+---------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease |
++--------------+------------+-----------+-------------+---------+
+| Naren        |         62 | 595168547 | B+ve        | Asthma  |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS    |
+| Safa         |         45 | 757316345 | B+ve        | Obesity |
+| Ajay         |         50 | 763675267 | B+ve        | TB      |
++--------------+------------+-----------+-------------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> where Patient_id NOT BETWEEN 45 AND 69;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select count(Patient_Name) from Patient;
++---------------------+
+| count(Patient_Name) |
++---------------------+
+|                   8 |
++---------------------+
+1 row in set (0.00 sec)
+
+mysql>
