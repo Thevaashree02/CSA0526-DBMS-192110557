@@ -1,0 +1,45 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Jaya         |         11 | 496570124 | O-ve        | TB             |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
++--------------+------------+-----------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> delete from Patient
+    -> where Patient_Name='Jaya';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
++--------------+------------+-----------+-------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> update Patient
+    -> set Blood_group='B+ve'
+    -> where Patient_Name='Tinu';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
++--------------+------------+-----------+-------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql>
