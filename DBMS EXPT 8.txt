@@ -1,0 +1,74 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select Patient_Name,Patient_id
+    -> from Patient
+    -> where Blood_group='B+ve';
++--------------+------------+
+| Patient_Name | Patient_id |
++--------------+------------+
+| Siva         |         34 |
+| Naren        |         62 |
+| Tinu         |         69 |
+| Safa         |         45 |
+| Ajay         |         50 |
++--------------+------------+
+5 rows in set (0.00 sec)
+
+mysql> create table temp_table(name char(30),id int(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc temp_table;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| name  | char(30) | YES  |     | NULL    |       |
+| id    | int(20)  | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into temp_table(name,id)
+    -> select Patient_Name,Patient_id
+    -> from Patient where Blood_group='B+ve';
+Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> select*from temp_table;
++-------+------+
+| name  | id   |
++-------+------+
+| Siva  |   34 |
+| Naren |   62 |
+| Tinu  |   69 |
+| Safa  |   45 |
+| Ajay  |   50 |
++-------+------+
+5 rows in set (0.00 sec)
+
+mysql> select*from Patient where Patient_id>=(select avg(Patient_id)from Patient);
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>
