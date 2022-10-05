@@ -1,0 +1,94 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> order by Patient_Name;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> order by Patient_id;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> group by Patient_id;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> group by Patient_Name;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
++--------------+------------+-----------+-------------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> select*from Patient
+    -> having Patient_id>50;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql>
