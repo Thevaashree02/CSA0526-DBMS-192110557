@@ -17,3 +17,5 @@
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%208.txt)
 # Exp_9
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%209.txt)
+# Exp_10
+[sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2010.txt)
