@@ -1,0 +1,50 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> create view Blood_group_view as select Patient_Name,Blood_group and Disease from Patient;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select*from Blood_group_view;
++--------------+-------------------------+
+| Patient_Name | Blood_group and Disease |
++--------------+-------------------------+
+| Raja         |                       0 |
+| Siva         |                       0 |
+| Naren        |                       0 |
+| Tinu         |                       0 |
+| Safa         |                       0 |
+| Safa         |                       0 |
+| Ajay         |                       0 |
+| prithivi     |                       0 |
++--------------+-------------------------+
+8 rows in set, 8 warnings (0.00 sec)
+
+mysql>  create index Patient_Name on Patient(Patient_Name);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> show index from Patient;
++---------+------------+--------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| Table   | Non_unique | Key_name     | Seq_in_index | Column_name  | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment |
++---------+------------+--------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+| patient |          0 | PRIMARY      |            1 | Ph_no        | A         |           1 |     NULL | NULL   |      | BTREE      |         |               |
+| patient |          1 | Patient_Name |            1 | Patient_Name | A         |           8 |     NULL | NULL   |      | BTREE      |         |               |
++---------+------------+--------------+--------------+--------------+-----------+-------------+----------+--------+------+------------+---------+---------------+
+2 rows in set (0.00 sec)
+
+mysql>
