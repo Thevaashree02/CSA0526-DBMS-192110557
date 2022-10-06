@@ -1,0 +1,97 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | B+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | B+ve        | Asthma         |
+| Tinu         |         69 | 638117056 | B+ve        | AIDS           |
+| Safa         |          7 | 639746064 | O-ve        | Cancer         |
+| Safa         |         45 | 757316345 | B+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | B+ve        | TB             |
+| prithivi     |         99 | 987649765 | A+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select*from Donor_details;
++------------+----------+-------------+----------------+-----------+
+| Donor_Name | Donor_id | Blood_group | Medical_report | Ph_no     |
++------------+----------+-------------+----------------+-----------+
+| Pragathi   |      123 | B+ve        | Eligible       | 823702479 |
+| Arsath     |      345 | O+ve        | Eligible       | 369158053 |
+| Santhosh   |      567 | A+ve        | Eligible       | 367405367 |
+| Aakash     |      789 | B+ve        | Eligible       | 306270428 |
+| Sanjay     |      987 | O+ve        | Eligible       | 963865498 |
+| Bharghavi  |      876 | B+ve        | Eligible       | 632830584 |
+| Swetha     |      765 | A+ve        | Eligible       | 746290563 |
+| Lakshmi    |      654 | B+ve        | eligible       | 693650287 |
++------------+----------+-------------+----------------+-----------+
+8 rows in set (0.00 sec)
+
+mysql> select Patient_Name,Donor_name,Patient_id
+    -> from Patient,Donor_details
+    -> where Donor_id=123;
++--------------+------------+------------+
+| Patient_Name | Donor_name | Patient_id |
++--------------+------------+------------+
+| Raja         | Pragathi   |         77 |
+| Siva         | Pragathi   |         34 |
+| Naren        | Pragathi   |         62 |
+| Tinu         | Pragathi   |         69 |
+| Safa         | Pragathi   |          7 |
+| Safa         | Pragathi   |         45 |
+| Ajay         | Pragathi   |         50 |
+| prithivi     | Pragathi   |         99 |
++--------------+------------+------------+
+8 rows in set (0.01 sec)
+
+mysql> select
+    -> Patient_Name,Disease,Donor_name
+    -> from Patient
+    -> left outer join Donor_details
+    ->  on Donor_id=876;
++--------------+----------------+------------+
+| Patient_Name | Disease        | Donor_name |
++--------------+----------------+------------+
+| Raja         | Kidney_failure | Bharghavi  |
+| Siva         | Diabetis       | Bharghavi  |
+| Naren        | Asthma         | Bharghavi  |
+| Tinu         | AIDS           | Bharghavi  |
+| Safa         | Cancer         | Bharghavi  |
+| Safa         | Obesity        | Bharghavi  |
+| Ajay         | TB             | Bharghavi  |
+| prithivi     | Tumor          | Bharghavi  |
++--------------+----------------+------------+
+8 rows in set (0.00 sec)
+
+mysql> select
+    -> Patient_Name,Disease,Donor_name
+    -> from Patient
+    -> right outer join Donor_details
+    -> on Donor_id=345;
++--------------+----------------+------------+
+| Patient_Name | Disease        | Donor_name |
++--------------+----------------+------------+
+| NULL         | NULL           | Pragathi   |
+| Raja         | Kidney_failure | Arsath     |
+| Siva         | Diabetis       | Arsath     |
+| Naren        | Asthma         | Arsath     |
+| Tinu         | AIDS           | Arsath     |
+| Safa         | Cancer         | Arsath     |
+| Safa         | Obesity        | Arsath     |
+| Ajay         | TB             | Arsath     |
+| prithivi     | Tumor          | Arsath     |
+| NULL         | NULL           | Santhosh   |
+| NULL         | NULL           | Aakash     |
+| NULL         | NULL           | Sanjay     |
+| NULL         | NULL           | Bharghavi  |
+| NULL         | NULL           | Swetha     |
+| NULL         | NULL           | Lakshmi    |
++--------------+----------------+------------+
+15 rows in set (0.00 sec)
+
+mysql> select
+    ->
