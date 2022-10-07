@@ -1,0 +1,125 @@
+
+mysql> use db;
+Database changed
+mysql> create table Patient_1(p_name char(30),p_id int(20),disease char(20),tests char(30),phoneno int(15));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Patient_1;
++---------+----------+------+-----+---------+-------+
+| Field   | Type     | Null | Key | Default | Extra |
++---------+----------+------+-----+---------+-------+
+| p_name  | char(30) | YES  |     | NULL    |       |
+| p_id    | int(20)  | YES  |     | NULL    |       |
+| disease | char(20) | YES  |     | NULL    |       |
+| tests   | char(30) | YES  |     | NULL    |       |
+| phoneno | int(15)  | YES  |     | NULL    |       |
++---------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql>  insert into Patient_1
+    ->  values('Tinu',69,'AIDS','HIV test',629647078),('Jaya',111,'Fever','Bloodtest',947206396),('Kavya',058,'Dengue','Bloodtest',780361696);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from Patient_1;
++--------+------+---------+-----------+-----------+
+| p_name | p_id | disease | tests     | phoneno   |
++--------+------+---------+-----------+-----------+
+| Tinu   |   69 | AIDS    | HIV test  | 629647078 |
+| Jaya   |  111 | Fever   | Bloodtest | 947206396 |
+| Kavya  |   58 | Dengue  | Bloodtest | 780361696 |
++--------+------+---------+-----------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> create table Doctor(d_id int(20),d_name char(30),specialisation char(30),phoneno int(15));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc Doctor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| d_id           | int(20)  | YES  |     | NULL    |       |
+| d_name         | char(30) | YES  |     | NULL    |       |
+| specialisation | char(30) | YES  |     | NULL    |       |
+| phoneno        | int(15)  | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> alter table Doctor add primary key(d_id);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc Doctor;
++----------------+----------+------+-----+---------+-------+
+| Field          | Type     | Null | Key | Default | Extra |
++----------------+----------+------+-----+---------+-------+
+| d_id           | int(20)  | NO   | PRI | 0       |       |
+| d_name         | char(30) | YES  |     | NULL    |       |
+| specialisation | char(30) | YES  |     | NULL    |       |
+| phoneno        | int(15)  | YES  |     | NULL    |       |
++----------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into Doctor
+    -> values(12,'Shruthi','ENT',737263865),(56,'Ajay','Generalphysician',592057295),(99,'Raja','Cardiologist',984672946);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from Doctor;
++------+---------+------------------+-----------+
+| d_id | d_name  | specialisation   | phoneno   |
++------+---------+------------------+-----------+
+|   12 | Shruthi | ENT              | 737263865 |
+|   56 | Ajay    | Generalphysician | 592057295 |
+|   99 | Raja    | Cardiologist     | 984672946 |
++------+---------+------------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> select d_id,d_name from Doctor;
++------+---------+
+| d_id | d_name  |
++------+---------+
+|   12 | Shruthi |
+|   56 | Ajay    |
+|   99 | Raja    |
++------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select count(d_name)from Doctor;
++---------------+
+| count(d_name) |
++---------------+
+|             3 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> select*from Patient_1
+    -> where disease='Fever';
++--------+------+---------+-----------+-----------+
+| p_name | p_id | disease | tests     | phoneno   |
++--------+------+---------+-----------+-----------+
+| Jaya   |  111 | Fever   | Bloodtest | 947206396 |
++--------+------+---------+-----------+-----------+
+1 row in set (0.00 sec)
+
+mysql> select p_name,disease from Patient_1;
++--------+---------+
+| p_name | disease |
++--------+---------+
+| Tinu   | AIDS    |
+| Jaya   | Fever   |
+| Kavya  | Dengue  |
++--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select d_id,phoneno from Doctor;
++------+-----------+
+| d_id | phoneno   |
++------+-----------+
+|   12 | 737263865 |
+|   56 | 592057295 |
+|   99 | 984672946 |
++------+-----------+
+3 rows in set (0.00 sec)
+
+mysql>
