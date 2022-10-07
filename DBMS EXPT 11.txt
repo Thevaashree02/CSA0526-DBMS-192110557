@@ -1,0 +1,57 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select Patient_Name,Blood_group,
+    -> case
+    -> when Blood_group='O+ve' then 'Universal donor'
+    -> when Blood_group='AB+' then 'Universal recipient'
+    -> else 'General donor'
+    -> end Donor_type
+    -> from Patient;
++--------------+-------------+---------------------+
+| Patient_Name | Blood_group | Donor_type          |
++--------------+-------------+---------------------+
+| Raja         | O+ve        | Universal donor     |
+| Siva         | O+ve        | Universal donor     |
+| Naren        | AB+         | Universal recipient |
+| Tinu         | O+ve        | Universal donor     |
+| Safa         | AB+         | Universal recipient |
+| Safa         | A+ve        | General donor       |
+| Ajay         | AB+         | Universal recipient |
+| prithivi     | B+ve        | General donor       |
++--------------+-------------+---------------------+
+8 rows in set (0.00 sec)
+
+mysql> select Patient_Name,Blood_group,
+    -> if(Blood_group='O+ve','Universal donor','General donar')
+    -> from Patient;
++--------------+-------------+----------------------------------------------------------+
+| Patient_Name | Blood_group | if(Blood_group='O+ve','Universal donor','General donar') |
++--------------+-------------+----------------------------------------------------------+
+| Raja         | O+ve        | Universal donor                                          |
+| Siva         | O+ve        | Universal donor                                          |
+| Naren        | AB+         | General donar                                            |
+| Tinu         | O+ve        | Universal donor                                          |
+| Safa         | AB+         | General donar                                            |
+| Safa         | A+ve        | General donar                                            |
+| Ajay         | AB+         | General donar                                            |
+| prithivi     | B+ve        | General donar                                            |
++--------------+-------------+----------------------------------------------------------+
+8 rows in set (0.00 sec)
+
+mysql>
