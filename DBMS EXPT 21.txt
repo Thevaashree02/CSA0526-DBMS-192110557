@@ -1,0 +1,65 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Employee;
++---------------+-------------+----------+--------+------+
+| Employee_name | Employee_id | Address  | Salary | Dno  |
++---------------+-------------+----------+--------+------+
+| Ram           |         123 | Chennai  |  50000 |    5 |
+| Sita          |         234 | Mumbai   |  45000 |    4 |
+| Krishna       |         345 | Kolkata  |  40000 |    3 |
+| Radha         |         456 | Banglore |  30000 |    2 |
+| Gannu         |         567 | Trichy   |  70000 |    1 |
++---------------+-------------+----------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select*from dept;
++------------+---------+
+| Dept_name  | Dnumber |
++------------+---------+
+| IT         |       2 |
+| Civil      |       5 |
+| Biotech    |       3 |
+| Electrical |       4 |
+| Software   |       1 |
++------------+---------+
+5 rows in set (0.00 sec)
+
+mysql>  select Employee_name,count(*)from Employee e,dept d where d.Dnumber=e.Dno
+    -> and d.Dnumber in(select e1.Dno from Employee e1 group by e1.Dno having count(*)>=1)
+    -> order by Dno;
++---------------+----------+
+| Employee_name | count(*) |
++---------------+----------+
+| Ram           |        5 |
++---------------+----------+
+1 row in set (0.00 sec)
+
+mysql> select Employee_name,Employee_id,Address
+    -> from Employee
+    -> where Employee_id>250;
++---------------+-------------+----------+
+| Employee_name | Employee_id | Address  |
++---------------+-------------+----------+
+| Krishna       |         345 | Kolkata  |
+| Radha         |         456 | Banglore |
+| Gannu         |         567 | Trichy   |
++---------------+-------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> select e.Employee_name,Employee_id,d.Dept_name
+    -> from Employee e
+    -> inner join dept d
+    -> on e.Dno=d.Dnumber;
++---------------+-------------+------------+
+| Employee_name | Employee_id | Dept_name  |
++---------------+-------------+------------+
+| Radha         |         456 | IT         |
+| Ram           |         123 | Civil      |
+| Krishna       |         345 | Biotech    |
+| Sita          |         234 | Electrical |
+| Gannu         |         567 | Software   |
++---------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+mysql>
