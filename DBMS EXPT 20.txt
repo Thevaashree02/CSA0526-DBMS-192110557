@@ -1,0 +1,60 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Employee;
++---------------+-------------+----------+--------+------+
+| Employee_name | Employee_id | Address  | Salary | Dno  |
++---------------+-------------+----------+--------+------+
+| Ram           |         123 | Chennai  |  50000 |    5 |
+| Sita          |         234 | Mumbai   |  45000 |    4 |
+| Krishna       |         345 | Kolkata  |  40000 |    3 |
+| Radha         |         456 | Banglore |  30000 |    2 |
+| Gannu         |         567 | Trichy   |  70000 |    1 |
++---------------+-------------+----------+--------+------+
+5 rows in set (0.00 sec)
+
+mysql> select*from dept;
++------------+---------+
+| Dept_name  | Dnumber |
++------------+---------+
+| IT         |       2 |
+| Civil      |       5 |
+| Biotech    |       3 |
+| Electrical |       4 |
+| Software   |       1 |
++------------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select e.Employee_Name,e.Employee_id,1.1*Salary as increment_salary
+    -> from Employee e,dept d
+    -> where e.Dno=d.Dnumber;
++---------------+-------------+------------------+
+| Employee_Name | Employee_id | increment_salary |
++---------------+-------------+------------------+
+| Radha         |         456 |          33000.0 |
+| Ram           |         123 |          55000.0 |
+| Krishna       |         345 |          44000.0 |
+| Sita          |         234 |          49500.0 |
+| Gannu         |         567 |          77000.0 |
++---------------+-------------+------------------+
+5 rows in set (0.00 sec)
+
+mysql> select sum(Salary),min(Salary),max(Salary),avg(Salary) from Employee;
++-------------+-------------+-------------+-------------+
+| sum(Salary) | min(Salary) | max(Salary) | avg(Salary) |
++-------------+-------------+-------------+-------------+
+|      235000 |       30000 |       70000 |  47000.0000 |
++-------------+-------------+-------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> select e.Employee_Name,e.Employee_id,e.Salary
+    -> from Employee e
+    -> where exists(select Dno from Employee where e.Dno=1);
++---------------+-------------+--------+
+| Employee_Name | Employee_id | Salary |
++---------------+-------------+--------+
+| Gannu         |         567 |  70000 |
++---------------+-------------+--------+
+1 row in set (0.00 sec)
+
+mysql>
