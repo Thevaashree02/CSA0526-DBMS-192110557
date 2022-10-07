@@ -1,0 +1,80 @@
+
+mysql> use db;
+Database changed
+mysql> create table BPC(Bookno int(20),Bookname char(50),Author char(20),Cost int(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc BPC;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| Bookno   | int(20)  | YES  |     | NULL    |       |
+| Bookname | char(50) | YES  |     | NULL    |       |
+| Author   | char(20) | YES  |     | NULL    |       |
+| Cost     | int(20)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql>  insert into BPC values(22,'Physics','Raghu',299),(52,'Mathematics','Ramanujam',599),(77,'Zoology','Anu',199),(69,'Psychology','Senthil',399);
+Query OK, 4 rows affected (0.01 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from BPC;
++--------+-------------+-----------+------+
+| Bookno | Bookname    | Author    | Cost |
++--------+-------------+-----------+------+
+|     22 | Physics     | Raghu     |  299 |
+|     52 | Mathematics | Ramanujam |  599 |
+|     77 | Zoology     | Anu       |  199 |
+|     69 | Psychology  | Senthil   |  399 |
++--------+-------------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> update BPC
+    -> set Author='Newton'
+    -> where Bookno=22;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from BPC;
++--------+-------------+-----------+------+
+| Bookno | Bookname    | Author    | Cost |
++--------+-------------+-----------+------+
+|     22 | Physics     | Newton    |  299 |
+|     52 | Mathematics | Ramanujam |  599 |
+|     77 | Zoology     | Anu       |  199 |
+|     69 | Psychology  | Senthil   |  399 |
++--------+-------------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into BPC values(65,'English','Sudhamoorthy',499);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from BPC;
++--------+-------------+--------------+------+
+| Bookno | Bookname    | Author       | Cost |
++--------+-------------+--------------+------+
+|     22 | Physics     | Newton       |  299 |
+|     52 | Mathematics | Ramanujam    |  599 |
+|     77 | Zoology     | Anu          |  199 |
+|     69 | Psychology  | Senthil      |  399 |
+|     65 | English     | Sudhamoorthy |  499 |
++--------+-------------+--------------+------+
+5 rows in set (0.00 sec)
+
+mysql> delete from BPC
+    -> where Bookno=69;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from BPC;
++--------+-------------+--------------+------+
+| Bookno | Bookname    | Author       | Cost |
++--------+-------------+--------------+------+
+|     22 | Physics     | Newton       |  299 |
+|     52 | Mathematics | Ramanujam    |  599 |
+|     77 | Zoology     | Anu          |  199 |
+|     65 | English     | Sudhamoorthy |  499 |
++--------+-------------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql>
