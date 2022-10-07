@@ -1,0 +1,72 @@
+
+mysql> use db;
+Database changed
+mysql> create table car(car_name char(20),car_model int(10),car_mileage int(10),car_rent int(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc car;
++-------------+----------+------+-----+---------+-------+
+| Field       | Type     | Null | Key | Default | Extra |
++-------------+----------+------+-----+---------+-------+
+| car_name    | char(20) | YES  |     | NULL    |       |
+| car_model   | int(10)  | YES  |     | NULL    |       |
+| car_mileage | int(10)  | YES  |     | NULL    |       |
+| car_rent    | int(20)  | YES  |     | NULL    |       |
++-------------+----------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into car values('Ford',2005,20,1500),('Honda Fit',2016,16,2000),('Shift',2021,14,1200),('Tata',2008,10,1000);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from car;
++-----------+-----------+-------------+----------+
+| car_name  | car_model | car_mileage | car_rent |
++-----------+-----------+-------------+----------+
+| Ford      |      2005 |          20 |     1500 |
+| Honda Fit |      2016 |          16 |     2000 |
+| Shift     |      2021 |          14 |     1200 |
+| Tata      |      2008 |          10 |     1000 |
++-----------+-----------+-------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> create table company(c_name varchar(20),no_of_cars int(20),phone_no int(20));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc company;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| c_name     | varchar(20) | YES  |     | NULL    |       |
+| no_of_cars | int(20)     | YES  |     | NULL    |       |
+| phone_no   | int(20)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into company values('SRS MOTORS',36,956743218),('TVS MOTORS',24,670362881),('BMW MOTORS',70,765439772);
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select*from company;
++------------+------------+-----------+
+| c_name     | no_of_cars | phone_no  |
++------------+------------+-----------+
+| SRS MOTORS |         36 | 956743218 |
+| TVS MOTORS |         24 | 670362881 |
+| BMW MOTORS |         70 | 765439772 |
++------------+------------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> delete from company where no_of_cars=24;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from company;
++------------+------------+-----------+
+| c_name     | no_of_cars | phone_no  |
++------------+------------+-----------+
+| SRS MOTORS |         36 | 956743218 |
+| BMW MOTORS |         70 | 765439772 |
++------------+------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql>
