@@ -1,0 +1,62 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Mano         |         11 | 506270536 | A+ve        | Malaria        |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Jaya         |         10 | 735917045 | O+ve        | Dengue         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> DELIMITER
+ERROR:
+DELIMITER must be followed by a 'delimiter' character or string
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE Patient_info()
+    -> begin
+    -> select*from Patient;
+    -> end;//
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> CALL Patient_info();
+    -> //
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Mano         |         11 | 506270536 | A+ve        | Malaria        |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Jaya         |         10 | 735917045 | O+ve        | Dengue         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+10 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> call while_loop()
+    -> //
++----------------------------+
+| res                        |
++----------------------------+
+| 1,5,25,125,625,3125,15625, |
++----------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
