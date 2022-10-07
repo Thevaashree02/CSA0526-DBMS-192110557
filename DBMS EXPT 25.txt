@@ -1,0 +1,74 @@
+
+mysql> use db;
+Database changed
+mysql> create table student_progress(std_id int(20),std_name char(20),DBMS int(10),EM int(10),DM int(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc student_progress;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| std_id   | int(20)  | YES  |     | NULL    |       |
+| std_name | char(20) | YES  |     | NULL    |       |
+| DBMS     | int(10)  | YES  |     | NULL    |       |
+| EM       | int(10)  | YES  |     | NULL    |       |
+| DM       | int(10)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> alter table student_progress add total int(10);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student_progress add grade char(2);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student_progress;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| std_id   | int(20)  | YES  |     | NULL    |       |
+| std_name | char(20) | YES  |     | NULL    |       |
+| DBMS     | int(10)  | YES  |     | NULL    |       |
+| EM       | int(10)  | YES  |     | NULL    |       |
+| DM       | int(10)  | YES  |     | NULL    |       |
+| total    | int(10)  | YES  |     | NULL    |       |
+| grade    | char(2)  | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+7 rows in set (0.01 sec)
+
+mysql> insert into student_progress
+    -> values(1,'Ananya',98,97,99,294,'S'),(3,'Anish',87,95,74,256,'A'),(6,'Nandhini',74,65,80,219,'B'),(5,'Krupesh',64,55,59,178,'D');
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select*from student_progress;
++--------+----------+------+------+------+-------+-------+
+| std_id | std_name | DBMS | EM   | DM   | total | grade |
++--------+----------+------+------+------+-------+-------+
+|      1 | Ananya   |   98 |   97 |   99 |   294 | S     |
+|      3 | Anish    |   87 |   95 |   74 |   256 | A     |
+|      6 | Nandhini |   74 |   65 |   80 |   219 | B     |
+|      5 | Krupesh  |   64 |   55 |   59 |   178 | D     |
++--------+----------+------+------+------+-------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select std_id,total,
+    -> case
+    -> when total>150 then 'the mark grade is greater than 150'
+    -> when total=150 then 'the mark grade is 150'
+    -> else 'the mark grade is below 150'
+    -> end as totalgrade
+    -> from student_progress;
++--------+-------+------------------------------------+
+| std_id | total | totalgrade                         |
++--------+-------+------------------------------------+
+|      1 |   294 | the mark grade is greater than 150 |
+|      3 |   256 | the mark grade is greater than 150 |
+|      6 |   219 | the mark grade is greater than 150 |
+|      5 |   178 | the mark grade is greater than 150 |
++--------+-------+------------------------------------+
+4 rows in set (0.00 sec)
+
+mysql>
