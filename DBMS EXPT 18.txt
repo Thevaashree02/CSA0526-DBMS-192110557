@@ -1,0 +1,46 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> select@@autocommit;
++--------------+
+| @@autocommit |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> insert into Patient values('Jaya',10,735917045,'O+ve','Dengue');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Jaya         |         10 | 735917045 | O+ve        | Dengue         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+9 rows in set (0.00 sec)
+
+mysql>
