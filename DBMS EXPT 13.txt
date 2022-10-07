@@ -1,0 +1,69 @@
+
+mysql> use db;
+Database changed
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set autocommit=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> savepoint insertion;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> update Patient set Patient_Name='Jaya'
+    -> where Patient_id=45;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Jaya         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> savepoint updation;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> rollback to insertion;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select*from Patient;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql>
