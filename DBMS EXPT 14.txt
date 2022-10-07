@@ -1,0 +1,72 @@
+
+mysql> use db;
+Database changed
+mysql> select*from PATIENT;
++--------------+------------+-----------+-------------+----------------+
+| Patient_Name | Patient_id | Ph_no     | Blood_group | Disease        |
++--------------+------------+-----------+-------------+----------------+
+| Raja         |         77 | 360942378 | O+ve        | Kidney_failure |
+| Siva         |         34 | 539785798 | O+ve        | Diabetis       |
+| Naren        |         62 | 595168547 | AB+         | Asthma         |
+| Tinu         |         69 | 638117056 | O+ve        | AIDS           |
+| Safa         |          7 | 639746064 | AB+         | Cancer         |
+| Safa         |         45 | 757316345 | A+ve        | Obesity        |
+| Ajay         |         50 | 763675267 | AB+         | TB             |
+| prithivi     |         99 | 987649765 | B+ve        | Tumor          |
++--------------+------------+-----------+-------------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> create user thevaashree;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> grant all on Patient to thevaashree;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for thevaashree;
++-------------------------------------------------------------+
+| Grants for thevaashree@%                                    |
++-------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'thevaashree'@'%'                     |
+| GRANT ALL PRIVILEGES ON `db`.`patient` TO 'thevaashree'@'%' |
++-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke all on Patient from thevaashree;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for thevaashree;
++-----------------------------------------+
+| Grants for thevaashree@%                |
++-----------------------------------------+
+| GRANT USAGE ON *.* TO 'thevaashree'@'%' |
++-----------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> grant select, update on Patient to thevaashree;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant select, update on Patient to thevaashree;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for thevaashree;
++-------------------------------------------------------------+
+| Grants for thevaashree@%                                    |
++-------------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'thevaashree'@'%'                     |
+| GRANT SELECT, UPDATE ON `db`.`patient` TO 'thevaashree'@'%' |
++-------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> revoke update on Patient from thevaashree;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants for thevaashree;
++-----------------------------------------------------+
+| Grants for thevaashree@%                            |
++-----------------------------------------------------+
+| GRANT USAGE ON *.* TO 'thevaashree'@'%'             |
+| GRANT SELECT ON `db`.`patient` TO 'thevaashree'@'%' |
++-----------------------------------------------------+
+2 rows in set (0.00 sec)
+
+mysql>
