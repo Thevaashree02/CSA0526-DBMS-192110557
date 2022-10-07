@@ -28,4 +28,4 @@
 # Exp_17
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2017.txt)
 # Exp_18
-[sqlqueries](
+[sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2018.txt)
