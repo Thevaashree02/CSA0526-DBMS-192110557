@@ -29,6 +29,8 @@
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2014.txt)
 # Exp_15
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2015.txt)
+# Exp_16
+[sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2016.txt)
 # Exp_17
 [sqlqueries](https://github.com/Thevaashree02/CSA0526-DBMS-192110557/blob/main/DBMS%20EXPT%2017.txt)
 # Exp_18
